@@ -1,0 +1,27 @@
+// Variables
+// Colors
+$color-darkmode-elements: hsl(209, 23%, 22%);
+$color-darkmode-bg: hsl(207, 26%, 17%);
+$color-darkmode-text: hsl(0, 0%, 100%);
+
+$color-lightmode-elements: hsl(0, 0%, 100%);
+$color-lightmode-text: hsl(200, 15%, 8%);
+$color-lightmode-input: hsl(0, 0%, 52%);
+$color-lightmode-bg: hsl(0, 0%, 98%);
+
+// Fonts
+$font-size-homepage-items: 14px;
+$font-size-detail-page: 16px;
+
+$font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+
+$font-weight-300: 300;
+$font-weight-600: 600;
+$font-weight-800: 800;
+
+/* Media Queries */
+@media only screen and (max-width: 375px) {
+}
+
+@media only screen and (max-width: 1440px) {
+}
