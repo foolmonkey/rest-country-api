@@ -1,3 +1,5 @@
+@import "reset.css";
+
 // Variables
 // Colors
 $color-darkmode-elements: hsl(209, 23%, 22%);
@@ -18,6 +20,53 @@ $font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
 $font-weight-300: 300;
 $font-weight-600: 600;
 $font-weight-800: 800;
+
+// Styling
+body {
+  background-color: $color-lightmode-bg;
+}
+
+@mixin wrapper {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+// Navigation Bar
+nav {
+  @include wrapper;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px 0;
+
+  box-shadow: 0 0 2px 2px rgba(138, 138, 138, 0.26);
+
+  h1 {
+    font-size: 1.3em;
+    font-weight: $font-weight-800;
+  }
+
+  #button-darkmode {
+    border: none;
+    background-color: unset;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      font-size: 1.3em;
+      margin-right: 5px;
+    }
+
+    p {
+      font-size: $font-size-homepage-items;
+      display: inline;
+    }
+  }
+}
 
 /* Media Queries */
 @media only screen and (max-width: 375px) {
