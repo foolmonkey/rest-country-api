@@ -12,8 +12,8 @@ $color-lightmode-input: hsl(0, 0%, 52%);
 $color-lightmode-bg: hsl(0, 0%, 98%);
 
 // Fonts
-$font-size-homepage-items: 14px;
-$font-size-detail-page: 16px;
+$font-size-homepage-items: 0.9rem;
+$font-size-detail-page: 1.2rem;
 
 $font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
 
@@ -82,6 +82,7 @@ nav {
   column-gap: 2.5em;
 }
 
+// Card
 .card {
   @include shadow-medium;
   margin-top: 2em;
@@ -93,7 +94,8 @@ nav {
   flex-flow: column nowrap;
 
   img {
-    border-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
     width: 100%;
   }
 
@@ -114,6 +116,91 @@ nav {
           font-weight: $font-weight-600;
           padding-right: 0.3em;
         }
+      }
+    }
+  }
+}
+
+@mixin filter-box {
+  @include shadow-medium;
+  padding: 15px;
+  background-color: white;
+  border-radius: 0.3em;
+  box-sizing: border-box;
+  font-size: $font-size-homepage-items;
+}
+
+// Filtering
+.filters {
+  @include wrapper;
+  margin: 2.5em 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  // Search
+  .searchbar {
+    @include filter-box;
+    width: 20em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    color: $color-lightmode-input;
+
+    i {
+      padding: 0;
+      padding-right: 0.5em;
+    }
+
+    input {
+      padding: 0;
+      border: none;
+      font-size: $font-size-homepage-items;
+      font-weight: $font-weight-600;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+
+  // Region filter
+  .filter-region {
+    position: relative;
+
+    .filter-region-label {
+      @include filter-box;
+      border: none;
+      cursor: pointer;
+
+      a {
+      }
+
+      i {
+        margin-left: 3em;
+      }
+    }
+
+    .filter-region-options {
+      @include filter-box;
+      margin-top: 0.3em;
+
+      width: 100%;
+      position: absolute;
+      display: flex;
+      flex-flow: column nowrap;
+
+      button {
+        border: none;
+        padding: 0.4em;
+        border-radius: 0.3em;
+        text-align: left;
+        background-color: unset;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgb(224, 224, 224);
       }
     }
   }

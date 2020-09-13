@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import Navbar from "./components/Navbar";
 import Cardlist from "./components/Cardlist";
+import Filter from "./components/Filter";
 
 function App() {
   const [countriesData, setCountriesData] = useState({});
@@ -13,8 +14,6 @@ function App() {
       .json()
       .then((response) => {
         setCountriesData(response);
-
-        console.log(response);
       })
       .catch((err) => console.error(err));
   }
@@ -26,6 +25,8 @@ function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
+
+      <Filter></Filter>
 
       <Cardlist items={countriesData}></Cardlist>
     </div>
