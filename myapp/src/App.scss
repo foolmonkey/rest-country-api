@@ -32,7 +32,7 @@ body {
 }
 
 @mixin shadow-medium {
-  box-shadow: 0 0 8px 0 rgba(141, 141, 141, 0.096);
+  box-shadow: 0 0 8px 0 rgba(141, 141, 141, 0.308);
 }
 
 // Navigation Bar
@@ -93,10 +93,13 @@ nav {
   display: flex;
   flex-flow: column nowrap;
 
-  img {
+  a {
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
-    width: 100%;
+    height: 10em;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   .card-body {
@@ -140,21 +143,23 @@ nav {
 
   // Search
   .searchbar {
-    @include filter-box;
-    width: 20em;
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
-
     color: $color-lightmode-input;
 
     i {
-      padding: 0;
-      padding-right: 0.5em;
+      padding-left: 1.2em;
+      margin-right: -1.2em;
+      z-index: 5;
     }
 
     input {
+      @include filter-box;
+      width: 25em;
       padding: 0;
+      padding-left: 3.6em;
+      margin-left: -1.2em;
+      height: 100%;
       border: none;
       font-size: $font-size-homepage-items;
       font-weight: $font-weight-600;
@@ -167,24 +172,34 @@ nav {
   // Region filter
   .filter-region {
     position: relative;
+    margin-bottom: -0.3em;
 
     .filter-region-label {
       @include filter-box;
+      position: relative;
       border: none;
       cursor: pointer;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      white-space: nowrap;
 
       a {
+        padding: 0;
       }
-
       i {
+        padding: 0;
         margin-left: 3em;
       }
     }
 
+    .filter-region-label-container {
+      padding-bottom: 0.3em;
+    }
+
     .filter-region-options {
       @include filter-box;
-      margin-top: 0.3em;
-
+      visibility: hidden;
       width: 100%;
       position: absolute;
       display: flex;
