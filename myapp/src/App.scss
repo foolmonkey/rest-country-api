@@ -47,6 +47,14 @@ nav {
 
   box-shadow: 0 0 2px 2px rgba(138, 138, 138, 0.26);
 
+  .home {
+    text-decoration: none;
+  }
+
+  .home:visited {
+    color: unset;
+  }
+
   h1 {
     font-size: 1.3em;
     font-weight: $font-weight-800;

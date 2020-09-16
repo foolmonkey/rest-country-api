@@ -16,7 +16,9 @@ function Navbar() {
   return (
     <header>
       <nav>
-        <h1>Where in the world?</h1>
+        <a href="/" className="home">
+          <h1>Where in the world?</h1>
+        </a>
 
         <button id="button-darkmode" onClick={toggleNightMode}>
           <i

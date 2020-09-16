@@ -18,6 +18,7 @@ function App() {
       .then((response) => {
         setCountriesData(response);
         setFilteredCountries(response);
+        setFilterRegion("");
       })
       .catch((err) => console.error(err));
   }

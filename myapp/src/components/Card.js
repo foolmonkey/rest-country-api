@@ -6,7 +6,7 @@ const Card = ({ data }) => {
       <a
         className="card-img"
         style={{ backgroundImage: `url(` + data.flag + `)` }}
-        href="#"
+        href={`${data.name.replace(/ /g, "_")}`}
       ></a>
 
       <div className="card-body">
