@@ -1,65 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+
 import "./App.scss";
+
 import Navbar from "./components/Navbar";
-import Cardlist from "./components/Cardlist";
-import Filter from "./components/Filter";
+import Home from "./views/Home/Home";
+import NoMatch from "./views/NoMatch/NoMatch";
+import CountryDetail from "./views/Detail/CountryDetail";
 
 function App() {
   const [countriesData, setCountriesData] = useState([]);
-  const [searchfield, setSearchfield] = useState("");
-  const [filterRegion, setFilterRegion] = useState("");
-  const [filteredCountries, setFilteredCountries] = useState([]);
 
-  async function fetchAPI() {
+  async function fetchAll() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
 
     response
       .json()
       .then((response) => {
         setCountriesData(response);
-        setFilteredCountries(response);
-        setFilterRegion("");
       })
       .catch((err) => console.error(err));
   }
 
-  function onSearchChange(ele) {
-    setSearchfield(ele.target.value);
-  }
-
-  function onFilterRegionChange(ele) {
-    if (ele.target.value != undefined) {
-      setFilterRegion(ele.target.value);
-    } else {
-      setFilterRegion("");
-    }
-  }
-
   useEffect(() => {
-    fetchAPI();
+    fetchAll();
   }, []);
-
-  useEffect(() => {
-    let filteredItems = countriesData.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(searchfield.toLowerCase()) &&
-        item.region.toLowerCase().includes(filterRegion)
-      );
-    });
-
-    setFilteredCountries(filteredItems);
-  }, [searchfield, countriesData, filterRegion]);
 
   return (
     <div className="App">
       <Navbar></Navbar>
 
-      <Filter
-        onSearchChange={onSearchChange}
-        onFilterRegionChange={onFilterRegionChange}
-      ></Filter>
+      <Switch>
+        <Route
+          exact
+          path="/home"
+          render={(props) => <Home {...props} countriesData={countriesData} />}
+        />
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
 
-      <Cardlist items={filteredCountries}></Cardlist>
+        <Route
+          exact
+          path="/detail/:name"
+          render={(props) => (
+            <CountryDetail {...props} countriesData={countriesData} />
+          )}
+        />
+
+        <Route component={NoMatch} />
+      </Switch>
     </div>
   );
 }

@@ -13,7 +13,7 @@ $color-lightmode-bg: hsl(0, 0%, 98%);
 
 // Fonts
 $font-size-homepage-items: 0.9rem;
-$font-size-detail-page: 1.2rem;
+$font-size-detail-page: 1rem;
 
 $font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
 
@@ -24,6 +24,7 @@ $font-weight-800: 800;
 // Styling
 body {
   background-color: $color-lightmode-bg;
+  font-family: $font-family;
 }
 
 @mixin wrapper {
@@ -42,6 +43,7 @@ nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-content: center;
   background-color: white;
   padding: 20px 0;
 
@@ -57,6 +59,7 @@ nav {
 
   h1 {
     font-size: 1.3em;
+    padding: 0.2rem 0;
     font-weight: $font-weight-800;
   }
 
@@ -66,7 +69,7 @@ nav {
     display: flex;
     align-items: center;
     cursor: pointer;
-
+    padding: 0.2rem 0;
     i {
       font-size: 1.3em;
       margin-right: 5px;
@@ -132,7 +135,7 @@ nav {
   }
 }
 
-@mixin filter-box {
+@mixin button-default {
   @include shadow-medium;
   padding: 15px;
   background-color: white;
@@ -162,7 +165,7 @@ nav {
     }
 
     input {
-      @include filter-box;
+      @include button-default;
       width: 25em;
       padding: 0;
       padding-left: 3.6em;
@@ -183,7 +186,7 @@ nav {
     margin-bottom: -0.3em;
 
     .filter-region-label {
-      @include filter-box;
+      @include button-default;
       position: relative;
       border: none;
       cursor: pointer;
@@ -206,7 +209,7 @@ nav {
     }
 
     .filter-region-options {
-      @include filter-box;
+      @include button-default;
       visibility: hidden;
       width: 100%;
       position: absolute;
@@ -229,8 +232,148 @@ nav {
   }
 }
 
+// Country Detail page
+.country-detail-container {
+  @include wrapper();
+  padding-top: 3em;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  button {
+    @include button-default;
+    padding: 0.7em 2em;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 3em;
+  }
+
+  .back {
+    width: 10em;
+    a {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        padding-left: 0.5em;
+      }
+    }
+  }
+
+  // Card
+  .country-detail {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    -moz-column-gap: 3em;
+    column-gap: 3em;
+    font-family: $font-family;
+
+    .card-img {
+      min-height: 200px;
+      height: 25vw;
+      min-width: 400px;
+      width: 40%;
+      box-sizing: border-box;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .card-body {
+      width: 50%;
+      box-sizing: border-box;
+
+      .card-title {
+        font-weight: $font-weight-800;
+        font-size: 1.6em;
+        padding-bottom: 1em;
+      }
+
+      .card-info {
+        display: flex;
+        flex-flow: column wrap;
+
+        .divider {
+          box-sizing: border-box;
+          display: flex;
+          -moz-column-gap: 2em;
+          column-gap: 2em;
+          justify-content: space-between;
+
+          li {
+            display: flex;
+            font-size: $font-size-detail-page;
+            padding-bottom: 1em;
+
+            h3 {
+              padding-right: 0.3em;
+              font-weight: $font-weight-600;
+            }
+          }
+
+          .additional {
+          }
+        }
+
+        .bordercountries {
+          margin-top: 1.5em;
+          font-weight: $font-weight-600;
+          display: flex;
+          flex-flow: column nowrap;
+          row-gap: 1.2em;
+
+          a {
+            padding-right: 0.7em;
+            button {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 /* Media Queries */
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 1024px) {
+  .country-detail-container {
+    // Card
+    .country-detail {
+      display: flex;
+      flex-flow: column wrap;
+
+      .card-img {
+        height: 45vw;
+        width: 100%;
+        min-width: unset;
+        min-height: unset;
+      }
+
+      .card-body {
+        width: 100%;
+        padding: 0;
+
+        .divider {
+          row-gap: 2em;
+          flex-flow: row wrap;
+        }
+
+        .card-title {
+          font-weight: $font-weight-800;
+          font-size: 1.5em;
+          padding: 1.5em 0;
+        }
+
+        li {
+          font-size: 1em;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1440px) {

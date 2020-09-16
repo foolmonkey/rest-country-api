@@ -16,7 +16,7 @@ const Filter = (props) => {
   }
 
   function updateFilterRegionChange(ele) {
-    if (ele.target.value != undefined) {
+    if (ele.target.value !== undefined) {
       if (ele.target.value.length > 1) {
         filterLabel.current.className = "fas fa-times-circle";
       } else {
