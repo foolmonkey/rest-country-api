@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Card = ({ data }) => {
   return (
     <div className="card">
-      <a
+      <Link
         className="card-img"
-        href={`/detail/${data.name.replace(/ /g, "_")}`}
         style={{ backgroundImage: `url(` + data.flag + `)` }}
-      ></a>
+        to={`/detail/${data.name.replace(/ /g, "_")}`}
+      ></Link>
 
       <div className="card-body">
         <h2 className="card-title country">{data.name}</h2>

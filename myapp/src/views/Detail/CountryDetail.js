@@ -43,12 +43,12 @@ const CountryDetail = (props) => {
       property = props.countriesData.find(
         (item) => item.alpha3Code === property
       );
-      let link = "/detail/" + property.name;
+      let link = property.name.replace(/ /g, "_");
 
       let Button = (
-        <a href={link} key={i}>
+        <Link to={link} key={i}>
           <button tabIndex="-1">{property.name}</button>
-        </a>
+        </Link>
       );
 
       filtered.push(Button);
