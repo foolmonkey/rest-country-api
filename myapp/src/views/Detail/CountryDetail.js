@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const CountryDetail = (props) => {
-  const countryName = props.match.params.name.replace(/_/g, " ");
-
+  const [countryName, setCountryName] = useState(
+    props.match.params.name.replace(/_/g, " ")
+  );
   const [countryInfo, setCountryInfo] = useState({});
 
-  useEffect(() => {
+  function updateCountry() {
     if (props.countriesData.length !== 0) {
       let countryMatch = props.countriesData.find(
         (item) => item.name === countryName
@@ -14,7 +15,11 @@ const CountryDetail = (props) => {
 
       setCountryInfo(countryMatch);
     }
-  }, [props.countriesData]);
+  }
+
+  useEffect(() => {
+    updateCountry();
+  }, [props.countriesData, countryName]);
 
   const FilteredItems = (items, propertyName) => {
     let filtered = "";
@@ -46,7 +51,13 @@ const CountryDetail = (props) => {
       let link = property.name.replace(/ /g, "_");
 
       let Button = (
-        <Link to={link} key={i}>
+        <Link
+          to={link}
+          key={i}
+          onClick={() => {
+            setCountryName(property.name);
+          }}
+        >
           <button tabIndex="-1">{property.name}</button>
         </Link>
       );
