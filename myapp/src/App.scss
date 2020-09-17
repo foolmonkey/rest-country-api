@@ -36,10 +36,6 @@ $font-weight-600: 600;
 $font-weight-800: 800;
 
 // Styling
-body {
-  font-family: $font-family;
-}
-
 :root,
 body,
 button,
@@ -107,6 +103,7 @@ nav {
     font-size: 1.3em;
     padding: 0.2rem 0;
     font-weight: $font-weight-800;
+    color: $color-text;
   }
 
   #button-darkmode {
@@ -201,6 +198,7 @@ nav {
 
     i {
       color: $color-text;
+      color: $color-input;
       padding-left: 1.2em;
       margin-right: -1.2em;
       z-index: 5;
@@ -364,7 +362,7 @@ nav {
 
       .card-title {
         font-weight: $font-weight-800;
-        font-size: 1.6em;
+        font-size: 2em;
         padding: 1em 0;
       }
 
