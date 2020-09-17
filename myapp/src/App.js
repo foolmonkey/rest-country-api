@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 
@@ -60,6 +60,10 @@ function App() {
           render={(props) => <Home {...props} countriesData={countriesData} />}
         />
         <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+
+        <Route exact path="/rest-country-api">
           <Redirect to="/home" />
         </Route>
 
