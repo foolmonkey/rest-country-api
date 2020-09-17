@@ -53,7 +53,16 @@ const CountryDetail = (props) => {
       filtered.push(Button);
     }
 
-    return <div>{filtered}</div>;
+    if (filtered.length == 0) {
+      return null;
+    } else {
+      return (
+        <li className="bordercountries">
+          <h3>Border Countries:</h3>
+          <div>{filtered}</div>
+        </li>
+      );
+    }
   };
 
   return (
@@ -116,10 +125,7 @@ const CountryDetail = (props) => {
                 </div>
               </div>
 
-              <li className="bordercountries">
-                <h3>Border Countries:</h3>
-                {Borders(countryInfo.borders)}
-              </li>
+              {Borders(countryInfo.borders)}
             </ul>
           </div>
         </section>
