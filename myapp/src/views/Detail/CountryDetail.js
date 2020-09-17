@@ -46,7 +46,7 @@ const CountryDetail = (props) => {
 
       let Button = (
         <a href={link} key={i}>
-          <button>{property.name}</button>
+          <button tabIndex="-1">{property.name}</button>
         </a>
       );
 
@@ -59,7 +59,7 @@ const CountryDetail = (props) => {
   return (
     <main className="country-detail-container">
       <button type="button" className="back">
-        <a href="/home">
+        <a href="/home" tabIndex="-1">
           <i class="fas fa-arrow-left"></i>
           <p>Back</p>
         </a>

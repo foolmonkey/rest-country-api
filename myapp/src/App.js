@@ -10,6 +10,7 @@ import CountryDetail from "./views/Detail/CountryDetail";
 
 function App() {
   const [countriesData, setCountriesData] = useState([]);
+  const [darkmode, setDarkmode] = useState(false);
 
   async function fetchAll() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -26,9 +27,17 @@ function App() {
     fetchAll();
   }, []);
 
+  useEffect(() => {
+    if (darkmode) {
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+    }
+  });
+
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Navbar setDarkmode={setDarkmode}></Navbar>
 
       <Switch>
         <Route

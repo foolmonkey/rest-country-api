@@ -2,14 +2,28 @@
 
 // Variables
 // Colors
-$color-darkmode-elements: hsl(209, 23%, 22%);
-$color-darkmode-bg: hsl(207, 26%, 17%);
-$color-darkmode-text: hsl(0, 0%, 100%);
+:root {
+  --color-elements: hsl(0, 0%, 100%);
+  --color-text: hsl(200, 15%, 8%);
+  --color-input: hsl(0, 0%, 52%);
+  --color-bg: hsl(0, 0%, 98%);
+  --color-shadow: rgba(124, 124, 124, 0.521);
+}
 
-$color-lightmode-elements: hsl(0, 0%, 100%);
-$color-lightmode-text: hsl(200, 15%, 8%);
-$color-lightmode-input: hsl(0, 0%, 52%);
-$color-lightmode-bg: hsl(0, 0%, 98%);
+// Dark Mode Colors
+html.dark {
+  --color-elements: hsl(209, 23%, 22%);
+  --color-bg: hsl(207, 26%, 17%);
+  --color-input: hsl(0, 0%, 52%);
+  --color-text: hsl(0, 0%, 100%);
+  --color-shadow: hsl(208, 26%, 13%);
+}
+
+$color-elements: var(--color-elements);
+$color-text: var(--color-text);
+$color-input: var(--color-input);
+$color-bg: var(--color-bg);
+$color-shadow: var(--color-shadow);
 
 // Fonts
 $font-size-homepage-items: 0.9rem;
@@ -23,8 +37,21 @@ $font-weight-800: 800;
 
 // Styling
 body {
-  background-color: $color-lightmode-bg;
   font-family: $font-family;
+}
+
+:root,
+body,
+button,
+input {
+  font-family: $font-family;
+  color: $color-text;
+  background-color: $color-bg;
+}
+
+.card,
+.card-body {
+  background-color: $color-bg;
 }
 
 @mixin wrapper {
@@ -33,21 +60,40 @@ body {
 }
 
 @mixin shadow-medium {
-  box-shadow: 0 0 8px 0 rgba(141, 141, 141, 0.308);
+  box-shadow: 0 0 6px 0 $color-shadow;
+}
+
+@mixin bg-img {
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin button-default {
+  background-color: $color-elements;
+  padding: 15px;
+  border-radius: 0.3em;
+  box-sizing: border-box;
+  font-size: $font-size-homepage-items;
+}
+
+button {
+  @include button-default();
 }
 
 // Navigation Bar
 nav {
+  background-color: $color-elements;
   @include wrapper;
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-content: center;
-  background-color: white;
   padding: 20px 0;
 
-  box-shadow: 0 0 2px 2px rgba(138, 138, 138, 0.26);
+  box-shadow: 0 0 2px 2px $color-shadow;
 
   .home {
     text-decoration: none;
@@ -66,6 +112,7 @@ nav {
   #button-darkmode {
     border: none;
     background-color: unset;
+    font-weight: $font-weight-800;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -99,22 +146,20 @@ nav {
   margin-top: 2em;
   margin-bottom: 3em;
   border-radius: 0.5em;
-  background-color: white;
-
   display: flex;
   flex-flow: column nowrap;
 
   a {
+    @include bg-img();
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     height: 10em;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   .card-body {
-    margin: 30px 20px;
+    border-radius: 0.5em;
+    padding: 30px 20px;
+    background-color: $color-elements;
 
     .card-title {
       font-size: 1.4em;
@@ -135,18 +180,10 @@ nav {
   }
 }
 
-@mixin button-default {
-  @include shadow-medium;
-  padding: 15px;
-  background-color: white;
-  border-radius: 0.3em;
-  box-sizing: border-box;
-  font-size: $font-size-homepage-items;
-}
-
 // Filtering
 .filters {
   @include wrapper;
+
   margin: 2.5em 0;
   display: flex;
   flex-flow: row nowrap;
@@ -154,26 +191,28 @@ nav {
 
   // Search
   .searchbar {
+    @include shadow-medium();
+    @include button-default();
     display: flex;
     align-items: center;
-    color: $color-lightmode-input;
+    width: 25em;
 
     i {
+      color: $color-text;
       padding-left: 1.2em;
       margin-right: -1.2em;
       z-index: 5;
     }
 
     input {
-      @include button-default;
-      width: 25em;
+      font-weight: $font-weight-800;
+      font-size: $font-size-homepage-items;
+      background-color: unset;
       padding: 0;
       padding-left: 3.6em;
       margin-left: -1.2em;
       height: 100%;
       border: none;
-      font-size: $font-size-homepage-items;
-      font-weight: $font-weight-600;
     }
     input:focus {
       outline: none;
@@ -186,7 +225,9 @@ nav {
     margin-bottom: -0.3em;
 
     .filter-region-label {
+      @include shadow-medium();
       @include button-default;
+      font-weight: $font-weight-600;
       position: relative;
       border: none;
       cursor: pointer;
@@ -205,11 +246,13 @@ nav {
     }
 
     .filter-region-label-container {
-      padding-bottom: 0.3em;
+      margin-bottom: 0.3em;
     }
 
     .filter-region-options {
       @include button-default;
+      @include shadow-medium;
+      background-color: $color-elements;
       visibility: hidden;
       width: 100%;
       position: absolute;
@@ -242,23 +285,29 @@ nav {
   flex-flow: column nowrap;
 
   button {
-    @include button-default;
+    @include button-default();
+    @include shadow-medium();
+    background-color: $color-elements;
     padding: 0.7em 2em;
+    text-align: center;
     border: none;
     cursor: pointer;
-    margin-bottom: 3em;
+    margin-bottom: 0.9em;
   }
 
   .back {
     width: 10em;
+    margin-bottom: 3em;
     a {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
+      color: $color-text;
 
       p {
-        padding-left: 0.5em;
+        margin-left: 0.5em;
       }
     }
   }
@@ -270,18 +319,16 @@ nav {
     display: flex;
     flex-flow: row wrap;
     -moz-column-gap: 3em;
-    column-gap: 3em;
+    column-gap: 6em;
     font-family: $font-family;
 
     .card-img {
+      @include shadow-medium();
+      @include bg-img();
       min-height: 200px;
       height: 25vw;
       min-width: 400px;
       width: 40%;
-      box-sizing: border-box;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
     .card-body {
@@ -291,7 +338,7 @@ nav {
       .card-title {
         font-weight: $font-weight-800;
         font-size: 1.6em;
-        padding-bottom: 1em;
+        padding: 1em 0;
       }
 
       .card-info {
@@ -303,20 +350,19 @@ nav {
           display: flex;
           -moz-column-gap: 2em;
           column-gap: 2em;
-          justify-content: space-between;
+          div {
+            width: 50%;
 
-          li {
-            display: flex;
-            font-size: $font-size-detail-page;
-            padding-bottom: 1em;
+            li {
+              display: flex;
+              font-size: $font-size-detail-page;
+              padding-bottom: 1em;
 
-            h3 {
-              padding-right: 0.3em;
-              font-weight: $font-weight-600;
+              h3 {
+                padding-right: 0.3em;
+                font-weight: $font-weight-600;
+              }
             }
-          }
-
-          .additional {
           }
         }
 
@@ -328,9 +374,7 @@ nav {
           row-gap: 1.2em;
 
           a {
-            padding-right: 0.7em;
-            button {
-            }
+            margin-right: 0.7em;
           }
         }
       }
@@ -374,7 +418,4 @@ nav {
       }
     }
   }
-}
-
-@media only screen and (max-width: 1440px) {
 }

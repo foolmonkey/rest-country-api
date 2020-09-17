@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-function Navbar() {
+const Navbar = (props) => {
   const nightModeButton = useRef(null);
 
   function toggleNightMode() {
@@ -8,8 +8,10 @@ function Navbar() {
 
     if (item.className === "far fa-moon") {
       item.className = "fas fa-moon";
+      props.setDarkmode(true);
     } else {
       item.className = "far fa-moon";
+      props.setDarkmode(false);
     }
   }
 
@@ -31,6 +33,6 @@ function Navbar() {
       </nav>
     </header>
   );
-}
+};
 
 export default Navbar;
