@@ -28,6 +28,15 @@ function App() {
     if (localStorage.getItem("dark") !== null) {
       setDarkmode(true);
     }
+
+    // Listen to tab events to enable outlines (accessibility improvement)
+    document.body.addEventListener("keyup", function (e) {
+      if (e.key === "Tab") {
+        /* tab */ document
+          .querySelector("html")
+          .classList.remove("no-focus-outline");
+      }
+    });
   }, []);
 
   useEffect(() => {

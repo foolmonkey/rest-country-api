@@ -50,6 +50,11 @@ input {
   background-color: $color-bg;
 }
 
+.no-focus-outline a:focus,
+.no-focus-outline button:focus {
+  outline: none;
+}
+
 @mixin wrapper {
   padding-left: 40px !important;
   padding-right: 40px !important;
@@ -330,6 +335,7 @@ nav {
       justify-content: center;
       text-decoration: none;
       color: $color-text;
+      outline: none;
 
       p {
         margin-left: 0.5em;
