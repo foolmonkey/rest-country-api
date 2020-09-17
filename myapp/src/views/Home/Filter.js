@@ -4,6 +4,7 @@ const Filter = (props) => {
   const regionOptions = useRef(null);
   const searchInput = useRef(null);
   const filterLabel = useRef(null);
+  const filterLabelText = useRef(null);
 
   function showFilterRegion() {
     let item = regionOptions.current;
@@ -18,12 +19,16 @@ const Filter = (props) => {
   function updateFilterRegionChange(ele) {
     if (ele.target.value !== undefined) {
       if (ele.target.value.length > 1) {
+        filterLabelText.current.textContent =
+          ele.target.value.charAt(0).toUpperCase() + ele.target.value.slice(1);
         filterLabel.current.className = "fas fa-times-circle";
       } else {
         filterLabel.current.className = "fas fa-angle-down";
+        filterLabelText.current.textContent = "Filter by Region";
       }
     } else {
       filterLabel.current.className = "fas fa-angle-down";
+      filterLabelText.current.textContent = "Filter by Region";
     }
 
     props.onFilterRegionChange(ele);
@@ -53,7 +58,7 @@ const Filter = (props) => {
             value=""
             onClick={updateFilterRegionChange}
           >
-            <a>Filter by Region</a>
+            <a ref={filterLabelText}>Filter by Region</a>
             <i ref={filterLabel} className="fas fa-angle-down"></i>
           </button>
         </div>

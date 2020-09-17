@@ -25,19 +25,24 @@ function App() {
 
   useEffect(() => {
     fetchAll();
+    if (localStorage.getItem("dark") !== null) {
+      setDarkmode(true);
+    }
   }, []);
 
   useEffect(() => {
     if (darkmode) {
       document.querySelector("html").classList.add("dark");
+      localStorage.setItem("dark", "true");
     } else {
       document.querySelector("html").classList.remove("dark");
+      localStorage.removeItem("dark");
     }
   });
 
   return (
     <div className="App">
-      <Navbar setDarkmode={setDarkmode}></Navbar>
+      <Navbar darkmode={darkmode} setDarkmode={setDarkmode}></Navbar>
 
       <Switch>
         <Route

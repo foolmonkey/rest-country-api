@@ -145,9 +145,9 @@ nav {
   @include shadow-medium;
   margin-top: 2em;
   margin-bottom: 3em;
-  border-radius: 0.5em;
   display: flex;
   flex-flow: column nowrap;
+  border-radius: 0.5em;
 
   a {
     @include bg-img();
@@ -157,9 +157,11 @@ nav {
   }
 
   .card-body {
-    border-radius: 0.5em;
+    flex-grow: 1;
     padding: 30px 20px;
     background-color: $color-elements;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 
     .card-title {
       font-size: 1.4em;
@@ -205,6 +207,8 @@ nav {
     }
 
     input {
+      flex-grow: 1;
+      color: $color-text;
       font-weight: $font-weight-800;
       font-size: $font-size-homepage-items;
       background-color: unset;
@@ -214,8 +218,29 @@ nav {
       height: 100%;
       border: none;
     }
+
     input:focus {
       outline: none;
+    }
+
+    input::-webkit-input-placeholder {
+      color: $color-input;
+    }
+
+    input::-moz-placeholder {
+      color: $color-input;
+    }
+
+    input:-ms-input-placeholder {
+      color: $color-input;
+    }
+
+    input::-ms-input-placeholder {
+      color: $color-input;
+    }
+
+    input::placeholder {
+      color: $color-input;
     }
   }
 
@@ -238,6 +263,8 @@ nav {
 
       a {
         padding: 0;
+        width: 7em;
+        text-align: left;
       }
       i {
         padding: 0;
@@ -269,7 +296,7 @@ nav {
       }
 
       button:hover {
-        background-color: rgb(224, 224, 224);
+        background-color: $color-shadow;
       }
     }
   }

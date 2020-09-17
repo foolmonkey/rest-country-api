@@ -6,13 +6,17 @@ const Navbar = (props) => {
   function toggleNightMode() {
     let item = nightModeButton.current;
 
-    if (item.className === "far fa-moon") {
+    if (!props.darkmode) {
       item.className = "fas fa-moon";
       props.setDarkmode(true);
     } else {
       item.className = "far fa-moon";
       props.setDarkmode(false);
     }
+  }
+
+  if (props.darkmode) {
+    nightModeButton.current.className = "fas fa-moon";
   }
 
   return (
