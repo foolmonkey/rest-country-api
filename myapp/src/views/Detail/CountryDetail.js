@@ -56,6 +56,7 @@ const CountryDetail = (props) => {
           key={i}
           onClick={() => {
             setCountryName(property.name);
+            updateCountry();
           }}
         >
           <button tabIndex="-1">{property.name}</button>
