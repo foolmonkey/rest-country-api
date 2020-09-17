@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CountryDetail = (props) => {
   const countryName = props.match.params.name.replace(/_/g, " ");
@@ -68,10 +69,10 @@ const CountryDetail = (props) => {
   return (
     <main className="country-detail-container">
       <button type="button" className="back">
-        <a href="/home" tabIndex="-1">
-          <i class="fas fa-arrow-left"></i>
+        <Link to="/">
+          <i className="fas fa-arrow-left"></i>
           <p>Back</p>
-        </a>
+        </Link>
       </button>
 
       {countryInfo.name === countryName && (

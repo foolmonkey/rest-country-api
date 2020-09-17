@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const nightModeButton = useRef(null);
@@ -22,9 +23,9 @@ const Navbar = (props) => {
   return (
     <header>
       <nav>
-        <a href="/" className="home">
+        <Link to="/" className="home">
           <h1>Where in the world?</h1>
-        </a>
+        </Link>
 
         <button id="button-darkmode" onClick={toggleNightMode}>
           <i

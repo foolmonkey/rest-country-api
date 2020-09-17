@@ -63,12 +63,7 @@ function App() {
           <Redirect to="/home" />
         </Route>
 
-        <Route exact path="/rest-country-api">
-          <Redirect to="/home" />
-        </Route>
-
         <Route
-          exact
           path="/detail/:name"
           render={(props) => (
             <CountryDetail {...props} countriesData={countriesData} />

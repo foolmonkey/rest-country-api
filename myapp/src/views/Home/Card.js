@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
   return (
     <div className="card">
       <a
         className="card-img"
+        href={`/detail/${data.name.replace(/ /g, "_")}`}
         style={{ backgroundImage: `url(` + data.flag + `)` }}
-        href={`detail/${data.name.replace(/ /g, "_")}`}
       ></a>
 
       <div className="card-body">
