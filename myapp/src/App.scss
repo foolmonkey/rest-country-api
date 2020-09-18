@@ -464,13 +464,12 @@ nav {
     @include wrapper(30px);
     flex-flow: column wrap !important;
     row-gap: 30px;
-    -moz-column-gap: 30px;
-    column-gap: 30px;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
 
     .searchbar {
       width: 100% !important;
+      margin-bottom: 3em;
     }
 
     .filter-region {
@@ -499,6 +498,7 @@ nav {
           flex-flow: column wrap;
           div {
             width: 100% !important;
+            margin-bottom: 2em !important;
           }
         }
 
