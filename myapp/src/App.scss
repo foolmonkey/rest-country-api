@@ -473,7 +473,7 @@ nav {
     }
 
     .filter-region {
-      width: 60% !important;
+      width: 33% !important;
       .filter-region-label {
         width: 100% !important;
       }
@@ -483,8 +483,11 @@ nav {
     }
   }
 
-  .card {
-    margin: 1.5em 0;
+  .cardlist {
+    @include wrapper(30px);
+    .card {
+      margin: 1.5em 0;
+    }
   }
 
   .country-detail-container {
