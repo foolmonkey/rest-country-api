@@ -43,6 +43,8 @@ const Filter = (props) => {
           placeholder="Search for a country..."
           onChange={props.onSearchChange}
           ref={searchInput}
+          name="Search"
+          aria-label="Search"
         ></input>
       </div>
 
@@ -58,11 +60,11 @@ const Filter = (props) => {
             value=""
             onClick={updateFilterRegionChange}
           >
-            <a ref={filterLabelText}>Filter by Region</a>
+            <button ref={filterLabelText}>Filter by Region</button>
             <i ref={filterLabel} className="fas fa-angle-down"></i>
           </button>
         </div>
-        <form className="filter-region-options" ref={regionOptions}>
+        <section className="filter-region-options" ref={regionOptions}>
           <button
             type="button"
             value="africa"
@@ -94,7 +96,7 @@ const Filter = (props) => {
           >
             Oceania
           </button>
-        </form>
+        </section>
       </div>
     </div>
   );

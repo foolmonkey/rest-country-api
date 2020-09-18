@@ -263,10 +263,11 @@ nav {
       flex-wrap: nowrap;
       align-items: center;
       white-space: nowrap;
-
-      a {
-        padding: 0;
-        width: 7em;
+      justify-content: space-between;
+      max-width: 200px;
+      button {
+        padding: unset;
+        border: none;
         text-align: left;
       }
       i {
