@@ -498,7 +498,10 @@ nav {
           flex-flow: column wrap;
           div {
             width: 100% !important;
-            margin-bottom: 2em !important;
+          }
+
+          .additionl {
+            margin-bottom: 1em !important;
           }
         }
 
