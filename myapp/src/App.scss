@@ -459,7 +459,9 @@ nav {
   .filters {
     @include wrapper(30px);
     flex-flow: column wrap !important;
-    row-gap: 20px;
+    row-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
 
@@ -485,5 +487,17 @@ nav {
   .country-detail-container {
     @include wrapper(30px);
     padding-top: 1.5em;
+
+    // Card
+    .country-detail {
+      .card-body {
+        .divider {
+          flex-flow: column wrap;
+          div {
+            width: 100% !important;
+          }
+        }
+      }
+    }
   }
 }
