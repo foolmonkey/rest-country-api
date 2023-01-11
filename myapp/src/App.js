@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import Home from "./views/Home/Home";
 import NoMatch from "./views/NoMatch/NoMatch";
 import CountryDetail from "./views/Detail/CountryDetail";
@@ -13,7 +13,7 @@ function App() {
   const [darkmode, setDarkmode] = useState(false);
 
   async function fetchAll() {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch("https://restcountries.com/v2/all");
 
     response
       .json()
